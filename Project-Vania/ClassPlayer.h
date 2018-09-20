@@ -1,21 +1,37 @@
-#include "red.h"
+#include "Red.h"
+#include <stdio.h>
+#include <iostream>
+#include <thread>
 
-class player{
+class ClassPlayer{
     private:
 
     public:
-        player();
-        const bool LEFT = true;
-        const bool RIGHT = false;
-        float velocity = 0;
+        ClassPlayer();
+        bool direction = LEFT; 
+        bool lastDirection = LEFT;
+        /**
+         *  0 : waiting;
+         *  1 : walking;
+         *  2 : jumping;
+         *  3 : sliding;
+         *  4 : dodging;
+         *  5 : attacking;
+         **/
+        volatile bool actions[6];
+        
+        float velocity[2];
         float position[2];
-        bool walking;
-        float acceleration = 0.2;
-        void friction();
-        void draw();
-        void walk(bool direction);
+
+        float acceleration = 0.1;
+
+        void executeAction();
+        void walk();
         void attack();
         void jump();
+        
+        void draw();
+        void friction();
         void displayEnix(int centerX, int centerY, int vertexSize)
         {
             glBegin(GL_LINE_LOOP);

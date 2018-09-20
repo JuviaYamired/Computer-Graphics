@@ -1,2 +1,2 @@
-hellomake: main.cpp red.h player.h player.cpp 
-	g++ -o mahouvania main.cpp red.h player.h player.cpp -std=c++11 -lGL -lGLU -lglut -I.
+hellomake: main.cpp Red.h ClassPlayer.h ClassPlayer.cpp ClassBoundaryBox.cpp
+	g++ -o projectvania main.cpp red.h ClassPlayer.h ClassPlayer.cpp ClassBoundaryBox.cpp -std=c++11 -lGL -lGLU -lglut -pthread -I.

@@ -2,11 +2,12 @@
 //#include <windows.h>
 #include <cmath>
 #include "GL/glut.h"
-#include "player.h"
+#include "ClassPlayer.h"
+#include "Red.h"
 
 #define KEY_ESC 27
 
-player player1;
+ClassPlayer player1;
 
 double degToRad(double deg){
 	return deg * M_PI / 180.0;
@@ -22,7 +23,7 @@ void glPaint(void) {
 	glLoadIdentity();
 	
 	player1.draw();
-
+	player1.executeAction();
 	//doble buffer, mantener esta instruccion al fin de la funcion
 	glutSwapBuffers();
 }
@@ -55,8 +56,8 @@ GLvoid window_key(unsigned char key, int x, int y) {
 	case KEY_ESC:
 		exit(0);
 		break;
-	case 'a':
-		player1.walk(player1.LEFT);
+	case 'x':
+		player1.jump();
 		break;
 	default:
 		break;
@@ -69,10 +70,33 @@ GLvoid SpecialKeys(int key, int x, int y)
     switch (key)
 	{
 		case GLUT_KEY_LEFT:
-			player1.walk(true);
+			player1.direction = LEFT;
+			player1.actions[1] = true;
+			//player1.walk();
 			break;
 		case GLUT_KEY_RIGHT:
-			player1.walk(false);
+			player1.direction = RIGHT;
+			player1.actions[1] = true;
+			//player1.walk();
+			break;
+		case GLUT_KEY_UP:
+			break;
+		case GLUT_KEY_DOWN:
+			break;
+	}
+}
+
+GLvoid SpecialUpKeys(int key, int x, int y)
+{
+    switch (key)
+	{
+		case GLUT_KEY_LEFT:
+			player1.actions[1] = false;
+			player1.lastDirection = LEFT;
+			break;
+		case GLUT_KEY_RIGHT:
+			player1.actions[1] = false;
+			player1.lastDirection = RIGHT;
 			break;
 		case GLUT_KEY_UP:
 			break;
@@ -103,6 +127,7 @@ int main(int argc, char** argv) {
 	// Callback del teclado
 	glutKeyboardFunc(&window_key);
 	glutSpecialFunc(SpecialKeys);
+	glutSpecialUpFunc(SpecialUpKeys);
 
 	glutMainLoop(); //bucle de rendering
 
