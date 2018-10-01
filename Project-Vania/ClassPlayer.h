@@ -1,15 +1,18 @@
 #include "Red.h"
-#include <stdio.h>
 #include <iostream>
 #include <thread>
+
+extern float TIME;
+extern float NEWTIME;
+extern float DTTIME;
 
 class ClassPlayer{
     private:
 
     public:
         ClassPlayer();
-        bool direction = LEFT; 
-        bool lastDirection = LEFT;
+        bool direction; 
+        bool lastDirection;
         /**
          *  0 : waiting;
          *  1 : walking;
@@ -20,12 +23,15 @@ class ClassPlayer{
          **/
         volatile bool actions[6];
         
+        float maxVelocity = 100;
         float velocity[2];
         float position[2];
 
-        float acceleration = 0.1;
+        float startTime = 0;
+        float acceleration = 20;
 
         void executeAction();
+        void move();
         void walk();
         void attack();
         void jump();

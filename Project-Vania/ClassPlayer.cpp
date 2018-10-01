@@ -19,26 +19,22 @@ void ClassPlayer::draw(){
     displayEnix(0, 0, 2);
 	//	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
-	friction();
+	//friction();
 }
 
 void ClassPlayer::friction()
-{
-	velocity[0] -= 0.09;
-	if (velocity[0] <= 0){
-		velocity[0] = 0;
+{	
+	if(direction == RIGHT){
+		velocity[0]-= 10;
+		if(velocity[0] <= 0)
+			velocity[0] = 0;
 	}
-
-	if (velocity[0] > 0.5){
-		velocity[0] = 0.5;
+	if( direction == LEFT){
+		velocity[0]+= 10;
+		if(velocity[0] >= 0)
+			velocity[0] = 0;
 	}
-
-	if (lastDirection){
-		position[0] = position[0] + velocity[0] * 1;
-	}
-	else{
-		position[0] = position[0] + (-velocity[0]) * 1;
-	}
+	velocity[1]+= GRAVITY;
 }
 
 void ClassPlayer::executeAction(){
@@ -51,10 +47,10 @@ void ClassPlayer::executeAction(){
 		walk();
 	}
 	else if(actions[2]){
-
+		jump();
 	}
 	//If jumping
-	else if(actions[3]){
+	else if(actions[3]){	
 
 	}
 	//If sliding
@@ -71,24 +67,31 @@ void ClassPlayer::executeAction(){
 	}
 }
 
+
+void ClassPlayer::move(){
+	friction();
+	position[0]+= velocity[0] * DTTIME;
+	position[1]+= velocity[1] * DTTIME + 1/2 * GRAVITY * DTTIME;
+	if(position[1] <= 0)
+		position[1] = 0;	
+	std::cout<< velocity[0] <<std::endl;
+}
+
 void ClassPlayer::walk()
 {
-	velocity[0] += acceleration;
-	if(velocity[0] > 0.5){
-		velocity[0] = 0.5;
+	if(direction == RIGHT){
+		velocity[0]+= acceleration;
+		if(velocity[0] > maxVelocity)
+			velocity[0] = maxVelocity;
 	}
-
-	if (direction){
-		position[0] = position[0] + velocity[0];
-	}
-	else{
-		position[0] = position[0] + (-velocity[0]);
+	if( direction == LEFT){
+		velocity[0]-= acceleration;
+		if(velocity[0] < -maxVelocity)
+			velocity[0] = -maxVelocity;
 	}
 }
 
 void ClassPlayer::jump(){
-	//position[0] = position[0] + velocity[1];
-	position[1] = position[1] + velocity[1];
-	
-	//position[1] = sqrt(2 * gravity * 4);
+	velocity[0]+= 100 * cos(degToRad(45));
+	velocity[1]+= 100 * sin(degToRad(45));
 }

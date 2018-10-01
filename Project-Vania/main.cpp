@@ -1,5 +1,4 @@
 #define GLUT_DISABLE_ATEXIT_HACK	
-//#include <windows.h>
 #include <cmath>
 #include "GL/glut.h"
 #include "ClassPlayer.h"
@@ -7,25 +6,28 @@
 
 #define KEY_ESC 27
 
-ClassPlayer player1;
 
-double degToRad(double deg){
-	return deg * M_PI / 180.0;
-}
+float TIME = 0;
+float NEWTIME = 0;
+float DTTIME = 0;
+
+ClassPlayer player1;
 
 //
 //funcion llamada a cada imagen
 void glPaint(void) {
-
+	TIME = glutGet(GLUT_ELAPSED_TIME);
+	DTTIME = (TIME - NEWTIME)/10000;	
 	//El fondo de la escena al color initial
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //(R, G, B, transparencia) en este caso un fondo negro
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	
-	player1.draw();
 	player1.executeAction();
+	player1.move();
+	player1.draw();
 	//doble buffer, mantener esta instruccion al fin de la funcion
 	glutSwapBuffers();
+	NEWTIME = TIME;
 }
 
 //
@@ -57,7 +59,20 @@ GLvoid window_key(unsigned char key, int x, int y) {
 		exit(0);
 		break;
 	case 'x':
-		player1.jump();
+		player1.actions[2] = true;
+		//player1.jump();
+		break;
+	default:
+		break;
+	}
+
+}
+
+GLvoid NormalKeys(unsigned char key, int x, int y) {
+	switch (key) {
+	case 'x':
+		player1.actions[2] = false;
+		//player1.jump();
 		break;
 	default:
 		break;
@@ -126,6 +141,7 @@ int main(int argc, char** argv) {
 	glutReshapeFunc(&window_redraw);
 	// Callback del teclado
 	glutKeyboardFunc(&window_key);
+	glutKeyboardUpFunc(&NormalKeys);
 	glutSpecialFunc(SpecialKeys);
 	glutSpecialUpFunc(SpecialUpKeys);
 
