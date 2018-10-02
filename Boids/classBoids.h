@@ -10,4 +10,5 @@ class classBoids{
         classBoids(int mBoidsQuantity);
         void initialize();
         void drawBoids();
+        void update();
 }
