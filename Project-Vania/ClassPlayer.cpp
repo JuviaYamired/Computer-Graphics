@@ -92,6 +92,6 @@ void ClassPlayer::walk()
 }
 
 void ClassPlayer::jump(){
-	velocity[0]+= 100 * cos(degToRad(45));
-	velocity[1]+= 100 * sin(degToRad(45));
+	//velocity[0]+= 100 * cos(degToRad(45));
+	velocity[1]+= 100;
 }

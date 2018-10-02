@@ -1,7 +1,8 @@
 #include "classEntity.h"
 
 classEntity::classEntity(){
-    
+    position[0] = 0;
+    position[1] = 0;
 }
 
 
@@ -16,4 +17,8 @@ classEntity::classEntity(float  mRadius, float mPositionX, float mPositionY, flo
     position[1] = mPositionY;
     visionAngle = mVisionAngle;
     direction = mDirection;
+}
+
+void classEntity::draw(){
+    displayEnix(position[0], position[1], bodySize);
 }
