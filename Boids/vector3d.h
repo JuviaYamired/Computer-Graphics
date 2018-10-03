@@ -18,8 +18,9 @@ class vector3d
 
 	public:
 		vector3d();
-		void mult(vector3d a);	
-		void div(vector3d a);	
+		vector3d(float a,float b,float c);
+		void mult(float a);	
+		void div(float n);	
 		void sub(vector3d a);
 		void add(vector3d a);
 		void normalize();		
@@ -29,10 +30,15 @@ vector3d::vector3d(){
 	y=0.0;
 	z=0.0;
 }
-void vector3d::mult(vector3d a){
-	x*=a.x;
-	y*=a.y;
-	z*=a.z;
+vector3d::vector3d(float a,float b,float c){
+	x=a;
+	y=b;
+	z=c;
+}
+void vector3d::mult(float a){
+	x*=a;
+	y*=a;
+	z*=a;
 }
 void vector3d::div(float n){
 	x/=n;

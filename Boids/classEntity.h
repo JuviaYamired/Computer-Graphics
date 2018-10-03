@@ -13,7 +13,7 @@ class classEntity {
         
         classEntity();
         classEntity(vector3d mPosition);
-        classEntity( float mRadius, vector3d mDirection, vector3d mPosition );
+        classEntity(float mRadius, float mVisionAngle, float mDirection, vector3d mPosition);
         void draw();
         void displayEnix(int centerX, int centerY, int vertexSize)
         {
