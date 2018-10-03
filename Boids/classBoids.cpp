@@ -22,19 +22,22 @@ void classBoids::drawBoids(){
 
 void classBoids::update(){
     float vector1[3], vector2[3], vector3[3];
-    for(int i=0; i < boidsQuantity; ++i){
-        //vector1 = rule1();
+    for(int i = 0; i < boidsQuantity; ++i){
         //vector2 = rule2();
         //vector3 = rule3();
-        Boids[i]->velocity += 0;//vector1 + vector2 + vector3;
-        Boids[i]->position += velocity; 
+        Boids[i]->velocity.add( rule1(i) );//vector1 + vector2 + vector3;
+        Boids[i]->position.add( Boids[i]->position ) ; 
     }
 }
 
-vector3d classBoids::rule1(){
-    vector3d centerOfMass = 0;
+vector3d classBoids::rule1(int pos){
+    vector3d centerOfMass(0, 0, 0);
     for(int i = 0; i < Boids.size; ++i){
-        centerOfMass+= Boids[i]->position;
+        if(i != pos)
+            centerOfMass.add( Boids[i]->position );
     } 
-    centerOfMass = centerOfMass/Boids.size;
+    centerOfMass.div(Boids.size - 1);
+    centerOfMass.sub(Boids[pos]->position);
+    centerOfMass.div(100);
+    return centerOfMass;
 }

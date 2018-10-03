@@ -1,5 +1,4 @@
 #include "red.h"
-#include "vector3d.h"
 
 class classEntity {
     public:

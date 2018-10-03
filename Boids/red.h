@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include "GL/glut.h"
+#include "vector3d.h"
 #include <stdio.h>
 
 const bool LEFT = false;
