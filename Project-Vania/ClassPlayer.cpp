@@ -25,15 +25,16 @@ void ClassPlayer::draw(){
 void ClassPlayer::friction()
 {	
 	if(direction == RIGHT){
-		velocity[0]-= 10;
+		velocity[0]-= 30;
 		if(velocity[0] <= 0)
 			velocity[0] = 0;
 	}
 	if( direction == LEFT){
-		velocity[0]+= 10;
+		velocity[0]+= 30;
 		if(velocity[0] >= 0)
 			velocity[0] = 0;
 	}
+	
 	velocity[1]+= GRAVITY;
 }
 
@@ -43,18 +44,19 @@ void ClassPlayer::executeAction(){
 
 	}
 	//If walking
-	else if(actions[1]){
+	if(actions[1]){
 		walk();
 	}
-	else if(actions[2]){
+	
+	if(actions[2]){
 		jump();
 	}
 	//If jumping
-	else if(actions[3]){	
+	if(actions[3]){	
 
 	}
 	//If sliding
-	else if(actions[4]){
+	if(actions[4]){
 
 	}
 	//If Dodging
@@ -72,8 +74,11 @@ void ClassPlayer::move(){
 	friction();
 	position[0]+= velocity[0] * DTTIME;
 	position[1]+= velocity[1] * DTTIME + 1/2 * GRAVITY * DTTIME;
-	if(position[1] <= 0)
-		position[1] = 0;	
+	if(position[1] <= 0){
+		position[1] = 0;
+		velocity[1] = 0;
+		jumps = 0;
+	}	
 	std::cout<< velocity[0] <<std::endl;
 }
 
@@ -93,5 +98,8 @@ void ClassPlayer::walk()
 
 void ClassPlayer::jump(){
 	//velocity[0]+= 100 * cos(degToRad(45));
-	velocity[1]+= 100;
+	if(jumps < maxJumps){
+		jumps+= 1;
+		velocity[1]+= 100;
+	}	
 }

@@ -11,4 +11,5 @@ class classBoids{
         void initialize();
         void drawBoids();
         void update();
+        vector3d rule1();
 }

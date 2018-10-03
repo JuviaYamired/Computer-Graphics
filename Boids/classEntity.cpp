@@ -5,18 +5,18 @@ classEntity::classEntity(){
     position[1] = 0;
 }
 
+classEntity(vector3d mPosition);
+        classEntity( float mRadius, vector3d mDirection, vector3d mPosition );
 
-classEntity::classEntity(float mPositionX, float mPositionY){
+classEntity::classEntity(vector3d mPosition){
     position[0] = mPositionX;
     position[1] = mPositionY;
 }
 
-classEntity::classEntity(float  mRadius, float mPositionX, float mPositionY, float mVisionAngle, float mDirection){
+classEntity::classEntity(float mRadius, float mVisionAngle, float mDirection, vector3d mPosition){
     radius = mRadius;
-    position[0] = mPositionX;
-    position[1] = mPositionY;
     visionAngle = mVisionAngle;
-    direction = mDirection;
+    position = mPosition;
 }
 
 void classEntity::draw(){

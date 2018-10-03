@@ -27,6 +27,14 @@ void classBoids::update(){
         //vector2 = rule2();
         //vector3 = rule3();
         Boids[i]->velocity += 0;//vector1 + vector2 + vector3;
-        Boids[i].position += velocity 
+        Boids[i]->position += velocity; 
     }
+}
+
+vector3d classBoids::rule1(){
+    vector3d centerOfMass = 0;
+    for(int i = 0; i < Boids.size; ++i){
+        centerOfMass+= Boids[i]->position;
+    } 
+    centerOfMass = centerOfMass/Boids.size;
 }

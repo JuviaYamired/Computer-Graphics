@@ -22,13 +22,15 @@ class ClassPlayer{
          *  5 : attacking;
          **/
         volatile bool actions[6];
-        
-        float maxVelocity = 100;
+        int jumps = 0;
+        int maxJumps = 2;
+
+        float maxVelocity = 150;
         float velocity[2];
         float position[2];
 
         float startTime = 0;
-        float acceleration = 20;
+        float acceleration = 30;
 
         void executeAction();
         void move();

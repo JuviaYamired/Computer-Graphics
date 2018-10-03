@@ -1,16 +1,19 @@
 #include "red.h"
+#include "vector3d.h"
 
 class classEntity {
     public:
         float radius;
-        float position[2];
-        float visionAngle;
-        float velocity;
-        float direction;
         float bodySize;
+        float visionAngle;
+
+        vector3d position;        
+        vector3d velocity;
+        vector3d direction;
+        
         classEntity();
-        classEntity(float mPositionX, float mPositionY);
-        classEntity(float  mRadius, float mPositionX, float mPositionY, float mVisionAngle, float mDirection);
+        classEntity(vector3d mPosition);
+        classEntity( float mRadius, vector3d mDirection, vector3d mPosition );
         void draw();
         void displayEnix(int centerX, int centerY, int vertexSize)
         {
