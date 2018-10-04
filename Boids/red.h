@@ -17,7 +17,9 @@ const float GRAVITY = -2;
 extern float TIME;
 extern float NEWTIME;
 extern float DTTIME;
-
+static float modV(vector3d v){
+	return sqrt(v.x*v.x+v.y*v.y+v.z*v.z);
+}
 static double degToRad(double deg){
 	return deg * M_PI / 180.0;
 }

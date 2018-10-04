@@ -14,6 +14,7 @@ float DTTIME = 0;
 
 //
 //funcion llamada a cada imagen
+classBoids  *peces;
 void glPaint(void) {
 	TIME = glutGet(GLUT_ELAPSED_TIME);
 	DTTIME = (TIME - NEWTIME)/10000;	
@@ -21,6 +22,7 @@ void glPaint(void) {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //(R, G, B, transparencia) en este caso un fondo negro
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	peces->drawBoids();
 	//doble buffer, mantener esta instruccion al fin de la funcion
 	glutSwapBuffers();
 	NEWTIME = TIME;
@@ -110,9 +112,9 @@ GLvoid idle(){
 //
 int main(int argc, char** argv) {
 
-	 classBoids  peces(3);
-	 peces.initialize();
-	 for(int i=0;i<peces.Boids.size();i++)
+	 peces=new classBoids(20);
+	 peces->initialize();
+	 /*for(int i=0;i<peces.Boids.size();i++)
 	 {
         peces.Boids[i]->position.print();
 	 }
@@ -121,11 +123,11 @@ int main(int argc, char** argv) {
 	 for(int i=0;i<peces.Boids.size();i++)
 	 {
         peces.Boids[i]->position.print();
-	 }
-
+	 }*/
+   
 
 	//Inicializacion de la GLUT
-	/*glutInit(&argc, argv);
+	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(600, 600); //tama�o de la ventana
 	glutInitWindowPosition(100, 100); //posicion de la ventana
@@ -142,7 +144,7 @@ int main(int argc, char** argv) {
 	glutSpecialUpFunc(SpecialUpKeys);
 
 	glutMainLoop(); //bucle de rendering
-	*/
+	
 
 	return 0;
 }

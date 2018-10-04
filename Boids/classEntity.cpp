@@ -21,4 +21,13 @@ classEntity::classEntity(float mRadius, float mVisionAngle, float mDirection, ve
 }
 
 void classEntity::draw(){
+    glBegin(GL_LINE_LOOP);
+    glColor3d(255,0,0);
+
+    glVertex2f(position.x-2,position.y-2);
+    glVertex2f(position.x-2,position.y+6);
+
+    glVertex2f(position.x-2,position.y+6);
+    glVertex2f(position.x+4,position.y+3);
+    glEnd();
 }

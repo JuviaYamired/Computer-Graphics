@@ -10,6 +10,7 @@ class classEntity {
 
         vector3d position;        
         vector3d velocity;
+        vector3d aceleraty;
         vector3d direction;
         
         classEntity();
