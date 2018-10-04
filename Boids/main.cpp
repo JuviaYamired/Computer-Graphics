@@ -1,7 +1,9 @@
 #define GLUT_DISABLE_ATEXIT_HACK	
 #include <cmath>
 #include "GL/glut.h"
-#include "Red.h"
+#include "red.h"
+#include "classBoids.h"
+#include "vector3d.h"
 
 #define KEY_ESC 27
 
@@ -108,8 +110,33 @@ GLvoid idle(){
 //
 int main(int argc, char** argv) {
 
+	 classBoids  peces(3);
+	 peces.initialize();
+	 for(int i=0;i<peces.Boids.size();i++)
+	 {
+        peces.Boids[i]->position.print();
+	 }
+	  for(int i=0;i<peces.Boids.size();i++)
+	 {
+ 
+        vector3d t=peces.rule2(i);
+        cout<<"despues de la regla 2 : .."<<i<<endl;
+        t.print();
+        cout<<endl;
+
+	 }
+      for(int i=0;i<peces.Boids.size();i++)
+	 {
+ 
+        vector3d t=peces.rule3(i);
+        cout<<"despues de la regla 3 : .."<<i<<endl;
+        t.print();
+        cout<<endl;
+        
+	 }
+
 	//Inicializacion de la GLUT
-	glutInit(&argc, argv);
+	/*glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(600, 600); //tama�o de la ventana
 	glutInitWindowPosition(100, 100); //posicion de la ventana
@@ -126,6 +153,7 @@ int main(int argc, char** argv) {
 	glutSpecialUpFunc(SpecialUpKeys);
 
 	glutMainLoop(); //bucle de rendering
+	*/
 
 	return 0;
 }

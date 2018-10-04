@@ -1,5 +1,6 @@
+#ifndef CLASSENTITY__h
+#define CLASSENTITY__h
 #include "red.h"
-#include "vector3d.h"
 
 class classEntity {
     public:
@@ -28,3 +29,4 @@ class classEntity {
             glEnd();
         }
 };
+#endif

@@ -8,16 +8,16 @@ classEntity::classEntity(){
 
 classEntity::classEntity(vector3d mPosition){
     position.x = mPosition.x;
-    position.x = mPosition.y;
-    position.x = mPosition.z;
+    position.y = mPosition.y;
+    position.z = mPosition.z;
 }
 
 classEntity::classEntity(float mRadius, float mVisionAngle, float mDirection, vector3d mPosition){
     radius = mRadius;
     visionAngle = mVisionAngle;
     position.x = mPosition.x;
-    position.x = mPosition.y;
-    position.x = mPosition.z;
+    position.y = mPosition.y;
+    position.z = mPosition.z;
 }
 
 void classEntity::draw(){
