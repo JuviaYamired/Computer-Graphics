@@ -58,16 +58,24 @@ vector3d classBoids::rule3(int j){ //Separation
     return pvj;
 }
 void classBoids::update(){
-   /* float vector1[3], vector2[3], vector3[3];
+    vector3d v1,v2,v3;
     for(int i=0; i < boidsQuantity; ++i){
+        //v1=rule1();
+          v2=rule2(i);
+          v3=rule3(i);
+
+
         //vector1 = rule1();
         //vector2 = rule2();
         //vector3 = rule3();
-        Boids[i]->velocity += 0;//vector1 + vector2 + vector3;
-        Boids[i].position += velocity 
+          //b.velocity = b.velocity + v1 + v2 + v3
+        //Boids[i]->velocity.add(v1);
+        Boids[i]->velocity.add(v2);//faltaria vector v1 / += 0;//vector1 + vector2 + vector3;
+        Boids[i]->velocity.add(v3);
+        //b.position = b.position + b.velocity
+        Boids[i]->position.add(Boids[i]->velocity);// += velocity 
     }
-    */
-
+    
 }
 
 

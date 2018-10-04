@@ -116,24 +116,13 @@ int main(int argc, char** argv) {
 	 {
         peces.Boids[i]->position.print();
 	 }
-	  for(int i=0;i<peces.Boids.size();i++)
+	 peces.update();
+	 cout <<"despues de actualizar "<<endl;
+	 for(int i=0;i<peces.Boids.size();i++)
 	 {
- 
-        vector3d t=peces.rule2(i);
-        cout<<"despues de la regla 2 : .."<<i<<endl;
-        t.print();
-        cout<<endl;
+        peces.Boids[i]->position.print();
+	 }
 
-	 }
-      for(int i=0;i<peces.Boids.size();i++)
-	 {
- 
-        vector3d t=peces.rule3(i);
-        cout<<"despues de la regla 3 : .."<<i<<endl;
-        t.print();
-        cout<<endl;
-        
-	 }
 
 	//Inicializacion de la GLUT
 	/*glutInit(&argc, argv);
