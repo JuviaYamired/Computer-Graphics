@@ -1,3 +1,6 @@
+#ifndef CLASSBOIDS_H_
+#define CLASSBOIDS_H_
+
 #include "red.h"
 #include "classEntity.h"
 #include <vector>
@@ -12,4 +15,6 @@ class classBoids{
         void drawBoids();
         void update();
         vector3d rule1(int pos);
-}
+};
+
+#endif

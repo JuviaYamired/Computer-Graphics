@@ -21,4 +21,5 @@ classEntity::classEntity(float mRadius, float mVisionAngle, float mDirection, ve
 }
 
 void classEntity::draw(){
+    displayEnix(position.x, position.y, 3);
 }

@@ -1,0 +1,2 @@
+hellomake: main.cpp red.h vector3d.h classEntity.h classEntity.cpp classBoids.h classBoids.cpp
+	g++ -o boids main.cpp red.h vector3d.h classEntity.h  classEntity.cpp classBoids.h classBoids.cpp -std=c++11 -lGL -lGLU -lglut -I.

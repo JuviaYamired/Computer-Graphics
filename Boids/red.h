@@ -22,4 +22,9 @@ static double degToRad(double deg){
 	return deg * M_PI / 180.0;
 }
 
+static float randomFloat(float a, float b)
+{
+	return ((b - a) * ((float)rand() / RAND_MAX)) + a;
+}
+
 #endif

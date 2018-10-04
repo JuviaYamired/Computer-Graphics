@@ -1,15 +1,18 @@
-#define GLUT_DISABLE_ATEXIT_HACK	
-#include <cmath>
-#include "GL/glut.h"
-#include "Red.h"
 
+#include "red.h"
+#include "classBoids.h"
+
+#define GLUT_DISABLE_ATEXIT_HACK
 #define KEY_ESC 27
-
 
 float TIME = 0;
 float NEWTIME = 0;
 float DTTIME = 0;
 
+
+classBoids *mflocking = new classBoids;
+
+	
 //
 //funcion llamada a cada imagen
 void glPaint(void) {
@@ -19,6 +22,7 @@ void glPaint(void) {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //(R, G, B, transparencia) en este caso un fondo negro
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	mflocking->drawBoids();
 	//doble buffer, mantener esta instruccion al fin de la funcion
 	glutSwapBuffers();
 	NEWTIME = TIME;
@@ -107,8 +111,8 @@ GLvoid idle(){
 //el programa principal
 //
 int main(int argc, char** argv) {
-
 	//Inicializacion de la GLUT
+	mflocking->initialize();
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(600, 600); //tama�o de la ventana
