@@ -25,12 +25,12 @@ void ClassPlayer::draw(){
 void ClassPlayer::friction()
 {	
 	if(direction == RIGHT){
-		velocity[0]-= 30;
+		velocity[0]-= 20;
 		if(velocity[0] <= 0)
 			velocity[0] = 0;
 	}
 	if( direction == LEFT){
-		velocity[0]+= 30;
+		velocity[0]+= 20;
 		if(velocity[0] >= 0)
 			velocity[0] = 0;
 	}
@@ -50,6 +50,7 @@ void ClassPlayer::executeAction(){
 	
 	if(actions[2]){
 		jump();
+		jumps+= 1;
 	}
 	//If jumping
 	if(actions[3]){	
@@ -79,7 +80,7 @@ void ClassPlayer::move(){
 		velocity[1] = 0;
 		jumps = 0;
 	}	
-	std::cout<< velocity[0] <<std::endl;
+	//std::cout<< velocity[0] <<std::endl;
 }
 
 void ClassPlayer::walk()
@@ -97,9 +98,7 @@ void ClassPlayer::walk()
 }
 
 void ClassPlayer::jump(){
-	//velocity[0]+= 100 * cos(degToRad(45));
 	if(jumps < maxJumps){
-		jumps+= 1;
-		velocity[1]+= 100;
+		velocity[1] = 100;
 	}	
 }
