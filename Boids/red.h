@@ -4,6 +4,7 @@
 #include "vector3d.h"
 #include <cmath>
 #include "GL/glut.h"
+#include "vector3d.h"
 #include <stdio.h>
 
 const bool LEFT = false;
@@ -33,6 +34,11 @@ static float dist(vector3d a, vector3d b){
       float tmpZ=b.z-a.z;
 
       return sqrt(tmpX*tmpX+tmpY*tmpY+tmpZ*tmpZ);
+}
+
+static float randomFloat(float a, float b)
+{
+	return ((b - a) * ((float)rand() / RAND_MAX)) + a;
 }
 
 #endif

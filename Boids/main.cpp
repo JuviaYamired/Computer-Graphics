@@ -5,13 +5,20 @@
 #include "classBoids.h"
 #include "vector3d.h"
 
-#define KEY_ESC 27
+#include "red.h"
+#include "classBoids.h"
 
+#define GLUT_DISABLE_ATEXIT_HACK
+#define KEY_ESC 27
 
 float TIME = 0;
 float NEWTIME = 0;
 float DTTIME = 0;
 
+
+classBoids *mflocking = new classBoids;
+
+	
 //
 //funcion llamada a cada imagen
 void glPaint(void) {
@@ -21,6 +28,7 @@ void glPaint(void) {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //(R, G, B, transparencia) en este caso un fondo negro
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	mflocking->drawBoids();
 	//doble buffer, mantener esta instruccion al fin de la funcion
 	glutSwapBuffers();
 	NEWTIME = TIME;

@@ -190,8 +190,8 @@ GLvoid window_display()
 	//glOrtho(-25.0f, 25.0f, -25.0f, 25.0f, -25.0f, 25.0f);
 
 	//displayTeapot();
-	//displaySun();
-	displayGizmo();
+	displaySun();
+	//displayGizmo();
 	glutSwapBuffers();
 	glFlush();
 }

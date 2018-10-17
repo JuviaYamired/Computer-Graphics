@@ -17,7 +17,7 @@ class classBoids{
         void initialize();
         void drawBoids();
         void update();
-        vector3d rule1();
+        vector3d rule1(int pos);
         vector3d rule2(int j);
         vector3d rule3(int j);
 
