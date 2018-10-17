@@ -1,3 +1,5 @@
+#ifndef CLASSENTITY__h
+#define CLASSENTITY__h
 #include "red.h"
 
 class classEntity {
@@ -27,3 +29,4 @@ class classEntity {
             glEnd();
         }
 };
+#endif

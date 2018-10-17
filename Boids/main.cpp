@@ -1,3 +1,9 @@
+#define GLUT_DISABLE_ATEXIT_HACK	
+#include <cmath>
+#include "GL/glut.h"
+#include "red.h"
+#include "classBoids.h"
+#include "vector3d.h"
 
 #include "red.h"
 #include "classBoids.h"
@@ -111,9 +117,23 @@ GLvoid idle(){
 //el programa principal
 //
 int main(int argc, char** argv) {
+
+	 classBoids  peces(3);
+	 peces.initialize();
+	 for(int i=0;i<peces.Boids.size();i++)
+	 {
+        peces.Boids[i]->position.print();
+	 }
+	 peces.update();
+	 cout <<"despues de actualizar "<<endl;
+	 for(int i=0;i<peces.Boids.size();i++)
+	 {
+        peces.Boids[i]->position.print();
+	 }
+
+
 	//Inicializacion de la GLUT
-	mflocking->initialize();
-	glutInit(&argc, argv);
+	/*glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(600, 600); //tama�o de la ventana
 	glutInitWindowPosition(100, 100); //posicion de la ventana
@@ -130,6 +150,7 @@ int main(int argc, char** argv) {
 	glutSpecialUpFunc(SpecialUpKeys);
 
 	glutMainLoop(); //bucle de rendering
+	*/
 
 	return 0;
 }
